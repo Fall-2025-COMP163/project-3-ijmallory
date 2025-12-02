@@ -4,7 +4,10 @@ Combat System Module - Starter Code
 
 Name: [Izeal Mallory]
 
-AI Usage: [Document any AI assistance used]
+AI Usage: I used Google Gemini to tell me why my code wasn't running properly(why my syntax was terrible),
+how to reformat my 'trys' and 'excepts', help me bring my print statements together in a well
+ordered manner, to format my code in a more readable/interpretable way, and to further explain to me the
+differences in the error handling exceptions. I also used it give me good and usable variable names.
 
 Handles combat mechanics
 """
