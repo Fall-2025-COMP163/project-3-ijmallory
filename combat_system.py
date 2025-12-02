@@ -267,8 +267,8 @@ class SimpleBattle:
         Returns: Integer damage amount
         """
         # TODO: Implement damage calculation
-        base_damage = attacker['strength']
-        defense = defender['strength'] // 4
+        base_damage = attacker.get('strength', 0)
+        defense = defender.get('strength', 0) // 4
         
         damage = base_damage - defense
         
@@ -440,7 +440,7 @@ def can_character_fight(character):
     Returns: True if health > 0 and not in battle
     """
     # TODO: Implement fight check
-    return character['health'] > 0
+    return character('health', 0) > 0
     pass
 
 def get_victory_rewards(enemy):
