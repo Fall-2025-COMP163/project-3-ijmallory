@@ -64,9 +64,8 @@ def accept_quest(character, quest_id, quest_data_dict):
     # Check prerequisite (if not "NONE")
     prerequisite = quest_data.get('PREREQUISITE', 'NONE')
     if prerequisite != 'NONE':
-        if not is_quest_completed(character, prerequisite):
+        if prerequisite not in character.get('completed_quests', []): # Using defensive check here
             raise QuestRequirementsNotMetError(f"Prerequisite quest '{prerequisite}' must be completed.")
-
     # Add to character['active_quests']
     character['active_quests'].append(quest_id)
     return True
@@ -203,7 +202,7 @@ def is_quest_completed(character, quest_id):
     Returns: True if completed, False otherwise
     """
     # TODO: Implement completion check
-    return quest_id in character['completed_quests']
+    return quest_id in character.get('completed_quests', [])
     pass
 
 def is_quest_active(character, quest_id):
@@ -213,7 +212,7 @@ def is_quest_active(character, quest_id):
     Returns: True if active, False otherwise
     """
     # TODO: Implement active check
-    return quest_id in character['active_quests']
+    return quest_id in character.get('active_quests', [])
     pass
 
 def can_accept_quest(character, quest_id, quest_data_dict):
