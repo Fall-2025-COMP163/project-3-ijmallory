@@ -2,9 +2,12 @@
 COMP 163 - Project 3: Quest Chronicles
 Character Manager Module - Starter Code
 
-Name: [Your Name Here]
+Name: [Izeal Mallory]
 
-AI Usage: [Document any AI assistance used]
+AI Usage: I used Google Gemini to tell me why my code wasn't running properly(why my syntax was terrible),
+how to reformat my 'trys' and 'excepts', help me bring my print statements together in a well
+ordered manner, to format my code in a more readable/interpretable way, and to further explain to me the
+differences in the error handling exceptions. I also used it give me good and usable variable names.
 
 This module handles character creation, loading, and saving.
 """
@@ -137,9 +140,6 @@ def _parse_value(key, value):
         except ValueError:
             raise InvalidSaveDataError(f"Value for {key} is not a valid number: {value}")
     return value
-    # Create save_directory if it doesn't exist
-    # Handle any file I/O errors appropriately
-    # Lists should be saved as comma-separated values
     pass
 
 def load_character(character_name, save_directory="data/save_games"):
@@ -192,10 +192,6 @@ def load_character(character_name, save_directory="data/save_games"):
     validate_character_data(loaded_data)
     
     return loaded_data
-    # Check if file exists → CharacterNotFoundError
-    # Try to read file → SaveFileCorruptedError
-    # Validate data format → InvalidSaveDataError
-    # Parse comma-separated lists back into Python lists
     pass
 
 def list_saved_characters(save_directory="data/save_games"):
@@ -282,10 +278,6 @@ def gain_experience(character, xp_amount):
         character["health"] = character["max_health"]
         
         # print(f"*** {character['name']} leveled up to Level {character['level']}! ***") # Optional print
-    # Check if character is dead first
-    # Add experience
-    # Check for level up (can level up multiple times)
-    # Update stats on level up
     pass
 
 def add_gold(character, amount):
