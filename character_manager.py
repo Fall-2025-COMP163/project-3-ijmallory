@@ -44,6 +44,7 @@ def create_character(name, character_class):
         "Rogue": {"health": 90, "strength": 12, "magic": 10},
         "Cleric": {"health": 100, "strength": 10, "magic": 15},
     }
+    base = base_stats[character_class]
     
     character = {
         "name": name,
