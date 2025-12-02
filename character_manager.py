@@ -325,7 +325,7 @@ def is_character_dead(character):
     Returns: True if dead, False if alive
     """
     # TODO: Implement death check
-    return character["health"] <= 0
+    return character.get("health", 0) <= 0
     pass
 
 def revive_character(character):
@@ -365,6 +365,7 @@ def validate_character_data(character):
         "experience": int, "gold": int, "inventory": list, 
         "active_quests": list, "completed_quests": list
     }
+
     for field, expected_type in required_fields.items():
         # Check all required keys exist
         if field not in character:
@@ -380,12 +381,11 @@ def validate_character_data(character):
              raise InvalidSaveDataError(f"Field '{field}' cannot be negative.")
 
     # Check for logical inconsistencies
-    if character['health'] > character['max_health']:
+    if character.get('health', 0) > character.get('max_health', 1):
         raise InvalidSaveDataError(f"Health ({character['health']}) exceeds Max Health ({character['max_health']}).")
         
-    if character['max_health'] <= 0:
+    if character.get('max_health', 0) <= 0:
         raise InvalidSaveDataError("Max Health must be positive.")
-
     return True
     # Check all required keys exist
     # Check that numeric values are numbers
