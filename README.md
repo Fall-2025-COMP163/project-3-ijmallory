@@ -128,10 +128,40 @@ This project encourages creativity! Here's what you can customize:
 Document your project with:
 
 1. **Module Architecture:** Explain your module organization
-2. **Exception Strategy:** Describe when/why you raise specific exceptions
-3. **Design Choices:** Justify major decisions
-4. **AI Usage:** Detail what AI assistance you used
-5. **How to Play:** Instructions for running the game
+   The project uses a highly modular design to separate concerns:
+
+- Data & Exceptions: game_data.py (loads static files) and custom_exceptions.py (defines errors).
+
+- Core Management: character_manager.py (creation, saving, XP/gold), inventory_system.py (items, shop, equipment), and quest_handler.py (acceptance, prerequisites, rewards).
+
+- Gameplay: combat_system.py (turn-based battle logic and enemy definition).
+
+- Flow: main.py coordinates all modules in the main game loop.
+3. **Exception Strategy:** Describe when/why you raise specific exceptions
+   Custom exceptions are used to enforce game rules, protect data integrity, and signal failures:
+
+- Data/Persistence: InvalidSaveDataError, MissingDataFileError are raised during loading or saving.
+
+- Game Rules: InsufficientLevelError, QuestRequirementsNotMetError are raised when accepting quests.
+
+- Resource/State: InventoryFullError, InsufficientResourcesError, CharacterDeadError are raised when resources are lacking or state is invalid (e.g., trying to buy without enough gold).
+4. **Design Choices:** Justify major decisions
+   - Character as Dictionary: The character state is a single, mutable dictionary for simple saving and easy access across modules.
+
+- Stat Logic Centralization: All equipment and item effects funnel through helper functions (e.g., in inventory_system.py) to consistently manage rules like "Health cannot exceed Max Health".
+
+- Reward Delegation: XP and gold rewards from combat/quests are handled solely by character_manager.py to centralize level-up and gold validation logic.
+5. **AI Usage:** Detail what AI assistance you used
+6. **How to Play:** Instructions for running the game
+  Run python main.py.
+
+The game automatically loads data or creates default files if missing.
+
+Select "1. New Game" and input a name/class (Warrior, Mage, Rogue, Cleric).
+
+Use the Game Menu options (View Stats, Inventory, Quest Menu, Explore) to play.
+
+Select "6. Save and Quit" to exit.
 
 ### What to Submit:
 
